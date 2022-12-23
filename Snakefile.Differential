@@ -200,13 +200,12 @@ module load {program.uropaverRh};
 if [ ! -e {params.fldr} ]; then mkdir {params.fldr}; fi
 echo '{{"queries":[ ' > {params.json}
 if [ '{wildcards.type}' == 'genes' ]; then
-     echo '      {{ "feature":"gene","distance":5000,"show.attributes":"gene_id"}},' >> {params.json}
-     echo '      {{ "feature":"gene","distance":100000,"show.attributes":"gene_id" }}],' >> {params.json}
+     echo '      {{ "feature":"gene","distance":5000 }},' >> {params.json}
+     echo '      {{ "feature":"gene","distance":100000 }}],' >> {params.json}
 else
      echo '      {{ "feature":"gene","distance":[3000,1000],"feature.anchor":"start" }},' >> {params.json}
-     echo '      {{ "feature":"gene","distance":3000,"feature.anchor":"end" }},' >> {params.json}
-     echo '      {{ "feature":"gene","distance":100000,"feature.anchor":"center" }},' >> {params.json}
-     echo '      {{ "feature":"gene","distance":100000 }}],' >> {params.json}
+     echo '      {{ "feature":"gene","distance":10000,"feature.anchor":"start" }},' >> {params.json}
+     echo '      {{ "feature":"gene","distance":100000,"feature.anchor":"start" }}],' >> {params.json}
 fi
 echo '"show_attributes":["gene_id"],' >> {params.json}
 echo '"priority":"Yes",' >> {params.json}
